@@ -14,15 +14,21 @@
     </sql>
 
     <select id="selectAll" resultMap="selectAll">
-        select c.name as fatherName,c2.name as childName
+        select c.name as fatherName,c2.name as childName,p.id as productId,p.name as productName
         from categories as  c
-        inner join categories as c2 on c.id = c2.parent_id;
+        inner join categories as c2 on c.id = c2.parent_id
+        right join products as p on p.category_id = c2.id
+        where p.is_on_sale = 1;
     </select>
 
     <resultMap id="selectAll" type="com.hanserwei.entity.vo.CategoryVO">
         <result property="fatherName" column="fatherName"/>
-        <collection property="childNames" ofType="java.lang.String">
-            <result column="childName"/>
+        <collection property="childNames" ofType="com.hanserwei.entity.vo.CategoryChildrenVO">
+            <result column="childName" property="name"/>
+            <collection property="products" ofType="com.hanserwei.entity.vo.ProductsVO">
+                <result column="productId" property="id"/>
+                <result column="productName" property="name"/>
+            </collection>
         </collection>
     </resultMap>
 </mapper>

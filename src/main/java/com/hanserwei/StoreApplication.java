@@ -23,15 +23,15 @@ import java.util.Scanner;
 
 public class StoreApplication {
 
+    private static final Scanner scanner = new Scanner(System.in);
     private static SqlSessionFactory sqlSessionFactory;
     private static UserService userService;
     private static ProductService productService;
     private static CartService cartService;
     private static OrderService orderService;
     private static AddressService addressService;
-
+    private static CategoryService categoryService;
     private static UserLoginVO currentUser;
-    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         try {
@@ -57,12 +57,14 @@ public class StoreApplication {
         CartItemsMapper cartItemsMapper = session.getMapper(CartItemsMapper.class);
         OrdersMapper ordersMapper = session.getMapper(OrdersMapper.class);
         AddressesMapper addressesMapper = session.getMapper(AddressesMapper.class);
+        CategoriesMapper categoriesMapper = session.getMapper(CategoriesMapper.class);
 
         userService = new UserServiceImpl(usersMapper);
         productService = new ProductServiceImpl(productsMapper);
         cartService = new CartServiceImpl(shoppingCartsMapper, cartItemsMapper, productsMapper);
         orderService = new OrderServiceImpl(ordersMapper, cartItemsMapper, productsMapper, shoppingCartsMapper);
         addressService = new AddressServiceImpl(addressesMapper);
+        categoryService = new CategoryServiceImpl(categoriesMapper);
     }
 
     private static void showWelcome() {
@@ -209,18 +211,51 @@ public class StoreApplication {
 
                 System.out.println("\n操作选项：");
                 System.out.println("1. 添加商品到购物车");
+                System.out.println("2. 查看商品分类");
                 System.out.println("0. 返回主菜单");
                 System.out.print("请输入选项：");
 
                 String choice = scanner.nextLine();
-                if ("1".equals(choice)) {
-                    addToCart(session);
+                switch (choice) {
+                    case "1" -> addToCart(session);
+                    case "2" -> showCategories();
                 }
             } catch (Exception e) {
                 System.out.println("获取商品列表失败：" + e.getMessage());
             }
         } catch (Exception e) {
             System.out.println("系统错误：" + e.getMessage());
+        }
+    }
+
+    private static void showCategories() {
+        try {
+            List<CategoryVO> categories = categoryService.selectAllCategories();
+            System.out.println("\n========== 商品分类 ==========");
+            for (CategoryVO category : categories) {
+                // 显示父分类
+                System.out.println("【" + category.getFatherName() + "】");
+
+                // 显示子分类及商品
+                List<CategoryChildrenVO> childCategories = category.getChildNames();
+                if (childCategories != null && !childCategories.isEmpty()) {
+                    for (int i = 0; i < childCategories.size(); i++) {
+                        CategoryChildrenVO child = childCategories.get(i);
+                        System.out.println("  " + (i + 1) + ". " + child.getName());
+
+                        // 显示该子分类下的商品
+                        List<ProductsVO> products = child.getProducts();
+                        if (products != null && !products.isEmpty()) {
+                            for (ProductsVO product : products) {
+                                System.out.println("    ├── " + product.getId() + ". " + product.getName());
+                            }
+                        }
+                    }
+                }
+                System.out.println(); // 父分类之间的空行
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("查询分类出现异常！");
         }
     }
 

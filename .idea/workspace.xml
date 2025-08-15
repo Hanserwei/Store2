@@ -4,81 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8614120-8fea-4d12-bd2c-d153d3c2eb7e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/e838bcf9-59cf-4e73-96e9-fb0d2791db4d.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/e838bcf9-59cf-4e73-96e9-fb0d2791db4d/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/e838bcf9-59cf-4e73-96e9-fb0d2791db4d/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/e838bcf9-59cf-4e73-96e9-fb0d2791db4d/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/e838bcf9-59cf-4e73-96e9-fb0d2791db4d/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/ceateData.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/createTable.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/dto/CartItemDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/dto/OrderDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/dto/UserLoginDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/dto/UserRegisterDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/Addresses.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/CartItems.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/Categories.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/Orders.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/Products.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/ShoppingCarts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/Users.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/AddressVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/CartVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/CategoryVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/OrderVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/ProductsVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/UserLoginVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/AddressesMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/CartItemsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/CategoriesMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/OrdersMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/ProductsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/ShoppingCartsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/UsersMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/AddressService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/CartService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/OrderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/AddressServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/CartServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/AddressesMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CartItemsMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CategoriesMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/OrdersMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/ProductsMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/ShoppingCartsMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/UsersMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/hanserwei/service/impl/AddressServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/hanserwei/service/impl/CategoryServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/hanserwei/service/impl/ProductServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/hanserwei/service/impl/UserServiceImplTest.java" afterDir="false" />
+    <list default="true" id="f8614120-8fea-4d12-bd2c-d153d3c2eb7e" name="更改" comment="在线商场Terminal版本，在终端完成运行。">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/CategoryChildrenVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/ceateData.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/ceateData.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/CategoryVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/CategoryVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CategoriesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CategoriesMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -91,9 +38,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="31JjHeR6QyvgbxqDSmIIsPQBdYa" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
@@ -104,6 +51,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.CategoryServiceImplTest.selectAllCategories.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -148,6 +96,22 @@
       <script-mode>FILE</script-mode>
       <method v="2" />
     </configuration>
+    <configuration name="CategoryServiceImplTest.selectAllCategories" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Store" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hanserwei.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hanserwei.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.hanserwei.service.impl.CategoryServiceImplTest" />
+      <option name="METHOD_NAME" value="selectAllCategories" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Store2" />
       <method v="2">
@@ -157,6 +121,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.StoreApplication" />
+        <item itemvalue="JUnit.CategoryServiceImplTest.selectAllCategories" />
         <item itemvalue="数据库脚本.createTable.sql" />
       </list>
     </recent_temporary>
@@ -177,11 +142,26 @@
       <option name="presentableId" value="Default" />
       <updated>1754267655192</updated>
       <workItem from="1754267656703" duration="689000" />
-      <workItem from="1755248983424" duration="2564000" />
+      <workItem from="1755248983424" duration="3022000" />
+      <workItem from="1755255917259" duration="31000" />
+      <workItem from="1755256007673" duration="2793000" />
     </task>
+    <task id="LOCAL-00001" summary="在线商场Terminal版本，在终端完成运行。">
+      <option name="closed" value="true" />
+      <created>1755251748947</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1755251748947</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="在线商场Terminal版本，在终端完成运行。" />
+    <option name="LAST_COMMIT_MESSAGE" value="在线商场Terminal版本，在终端完成运行。" />
   </component>
 </project>

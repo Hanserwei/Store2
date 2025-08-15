@@ -66,6 +66,8 @@ sql/
 
 ## 数据库设计
 
+使用逻辑外键实现外键约束，外键约束完全由业务层维护，减轻数据库压力，方便数据库数据备份迁移。
+
 ### 核心表结构
 - **users**: 用户表
 - **addresses**: 地址表
@@ -94,6 +96,9 @@ sql/
    ```
 
 3. **编译运行**
+
+   也支持maven构建🤣。
+
    ```bash
    mvn clean compile
    mvn exec:java -Dexec.mainClass="com.hanserwei.StoreApplication"
@@ -147,6 +152,8 @@ public record UserRegisterDTO(String username, String password, String checkPass
 ```
 
 ### 服务层设计
+标准三层结构，服务接口和实现分离
+
 清晰的接口和实现分离：
 ```java
 public interface UserService {
@@ -180,10 +187,14 @@ public interface UserService {
 - 可以更换数据库实现
 - 可以添加缓存层
 - 可以改造为Web应用
+- 可以添加日志记录但不能在控制台输出
+- 可以完善单元测试
+- 增加用户权限校验
 
 ## 测试数据
 
 系统包含丰富的测试数据：
+- 感谢Gemini2.5-flash提供测试数据🤣
 - 4个主要商品分类
 - 10+个测试商品
 - 示例地址数据

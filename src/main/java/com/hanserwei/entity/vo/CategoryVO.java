@@ -24,5 +24,5 @@ public class CategoryVO implements Serializable {
     /**
      * 子分类集合
      */
-    private List<String> childNames;
+    private List<CategoryChildrenVO> childNames;
 }
