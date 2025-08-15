@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanserwei.mapper.CategoriesMapper">
+    <resultMap id="BaseResultMap" type="com.hanserwei.entity.po.Categories">
+        <!--@mbg.generated-->
+        <!--@Table categories-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="parent_id" jdbcType="BIGINT" property="parentId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, parent_id
+    </sql>
+
+    <select id="selectAll" resultMap="selectAll">
+        select c.name as fatherName,c2.name as childName
+        from categories as  c
+        inner join categories as c2 on c.id = c2.parent_id;
+    </select>
+
+    <resultMap id="selectAll" type="com.hanserwei.entity.vo.CategoryVO">
+        <result property="fatherName" column="fatherName"/>
+        <collection property="childNames" ofType="java.lang.String">
+            <result column="childName"/>
+        </collection>
+    </resultMap>
+</mapper>

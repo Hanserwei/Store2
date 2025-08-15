@@ -1,0 +1,43 @@
+package com.hanserwei.entity.vo;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class OrderVO {
+    /**
+     * 订单唯一标识
+     */
+    private Long id;
+
+    /**
+     * 关联到users表的用户ID
+     */
+    private Long userId;
+
+    /**
+     * 订单地址，和地址表关联
+     */
+    private String address;
+
+    /**
+     * 订单总金额
+     */
+    private BigDecimal totalAmount;
+
+    /**
+     * 订单状态
+     */
+    private Integer status;
+
+    /**
+     * 订单创建时间
+     */
+    private LocalDateTime createdAt;
+}

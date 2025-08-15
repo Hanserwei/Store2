@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanserwei.mapper.AddressesMapper">
+    <resultMap id="BaseResultMap" type="com.hanserwei.entity.po.Addresses">
+        <!--@mbg.generated-->
+        <!--@Table addresses-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="consignee" jdbcType="VARCHAR" property="consignee"/>
+        <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="district" jdbcType="VARCHAR" property="district"/>
+        <result column="street" jdbcType="VARCHAR" property="street"/>
+        <result column="is_default" jdbcType="BOOLEAN" property="isDefault"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, user_id, consignee, phone_number, province, city, district, street, is_default
+    </sql>
+
+    <select id="selectAll" resultType="com.hanserwei.entity.vo.AddressVO">
+        select id, consignee, phone_number, province, city, district, street, is_default
+        from addresses
+        where user_id = #{userId}
+        order by is_default desc, id desc
+    </select>
+
+    <select id="selectAllByUserIdAndIsDefault" resultType="java.lang.String">
+        select concat(province,city,district,street) as detailedAddress
+        from addresses
+        where user_id = #{userId} and is_default = true
+    </select>
+    
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO addresses (user_id, consignee, phone_number, province, city, district, street, is_default)
+        VALUES (#{userId}, #{consignee}, #{phoneNumber}, #{province}, #{city}, #{district}, #{street}, #{isDefault})
+    </insert>
+    
+    <update id="update">
+        UPDATE addresses 
+        SET consignee = #{consignee}, 
+            phone_number = #{phoneNumber},
+            province = #{province},
+            city = #{city},
+            district = #{district},
+            street = #{street}
+        WHERE id = #{id} AND user_id = #{userId}
+    </update>
+    
+    <delete id="deleteByIdAndUserId">
+        DELETE FROM addresses WHERE id = #{id} AND user_id = #{userId}
+    </delete>
+    
+    <update id="clearDefaultByUserId">
+        UPDATE addresses SET is_default = 0 WHERE user_id = #{userId}
+    </update>
+    
+    <update id="setDefaultById">
+        UPDATE addresses SET is_default = 1 WHERE id = #{id} AND user_id = #{userId}
+    </update>
+</mapper>

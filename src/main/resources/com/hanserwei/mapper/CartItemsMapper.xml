@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanserwei.mapper.CartItemsMapper">
+  <resultMap id="BaseResultMap" type="com.hanserwei.entity.po.CartItems">
+    <!--@mbg.generated-->
+    <!--@Table cart_items-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="cart_id" jdbcType="BIGINT" property="cartId" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="added_at" jdbcType="TIMESTAMP" property="addedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, cart_id, product_id, quantity, added_at
+  </sql>
+  
+  <select id="selectByCartIdAndProductId" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM cart_items
+    WHERE cart_id = #{cartId} AND product_id = #{productId}
+  </select>
+  
+  <select id="selectByCartId" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM cart_items
+    WHERE cart_id = #{cartId}
+  </select>
+  
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO cart_items (cart_id, product_id, quantity, added_at)
+    VALUES (#{cartId}, #{productId}, #{quantity}, #{addedAt})
+  </insert>
+  
+  <update id="updateQuantity">
+      UPDATE cart_items
+      SET quantity = #{quantity}
+      WHERE id = #{id}
+  </update>
+  
+  <delete id="deleteByCartIdAndProductId">
+    DELETE FROM cart_items 
+    WHERE cart_id = #{cartId} AND product_id = #{productId}
+  </delete>
+  
+  <delete id="deleteByCartId">
+    DELETE FROM cart_items WHERE cart_id = #{cartId}
+  </delete>
+</mapper>
