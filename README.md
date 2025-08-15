@@ -78,6 +78,30 @@ sql/
 - **orders**: 订单表
 - **order_items**: 订单商品表
 
+数据库表关系
+
+```mermaid
+graph TD
+    subgraph "数据库表"
+        Users(node5: 用户)
+        Products(node3: 商品)
+        Categories(node7: 商品分类)
+        UserAddresses(node6: 用户地址)
+        Orders(node4: 订单)
+        Carts(node2: 购物车)
+        CartItems(node0: 购物车商品)
+        OrderItems(node1: 订单商品)
+    end
+
+    UserAddresses -- user_id:id --> Users
+    CartItems -- product_id:id --> Products
+    OrderItems -- order_id:id --> Orders
+    OrderItems -- product_id:id --> Products
+    Orders -- user_id:id --> Users
+    Products -- category_id:id --> Categories
+    Carts -- user_id:id --> Users
+```
+
 ## 运行方式
 
 1. **准备数据库**

@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8614120-8fea-4d12-bd2c-d153d3c2eb7e" name="更改" comment="在线商场Terminal版本，在终端完成运行。">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/CategoryChildrenVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/ceateData.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/ceateData.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/CategoryVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/CategoryVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CategoriesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CategoriesMapper.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f8614120-8fea-4d12-bd2c-d153d3c2eb7e" name="更改" comment="写完才发现，妈的分类没写。随便写了一下。" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,7 +134,7 @@
       <workItem from="1754267656703" duration="689000" />
       <workItem from="1755248983424" duration="3022000" />
       <workItem from="1755255917259" duration="31000" />
-      <workItem from="1755256007673" duration="2793000" />
+      <workItem from="1755256007673" duration="3299000" />
     </task>
     <task id="LOCAL-00001" summary="在线商场Terminal版本，在终端完成运行。">
       <option name="closed" value="true" />
@@ -154,14 +144,34 @@
       <option name="project" value="LOCAL" />
       <updated>1755251748947</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="写完才发现，妈的分类没写。随便写了一下。">
+      <option name="closed" value="true" />
+      <created>1755258886216</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1755258886216</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="在线商场Terminal版本，在终端完成运行。" />
-    <option name="LAST_COMMIT_MESSAGE" value="在线商场Terminal版本，在终端完成运行。" />
+    <MESSAGE value="写完才发现，妈的分类没写。随便写了一下。" />
+    <option name="LAST_COMMIT_MESSAGE" value="写完才发现，妈的分类没写。随便写了一下。" />
   </component>
 </project>
