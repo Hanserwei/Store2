@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 控制台输出 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- MyBatis SQL日志 -->
+    <!-- SQL日志开关 -->
+    <logger name="com.hanserwei.mapper" level="DEBUG"/>
+    <!-- 这两个可以不管 -->
+    <logger name="org.apache.ibatis" level="INFO"/>
+    <logger name="java.sql" level="INFO"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

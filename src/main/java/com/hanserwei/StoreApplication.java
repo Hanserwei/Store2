@@ -10,6 +10,7 @@ import com.hanserwei.entity.vo.*;
 import com.hanserwei.mapper.*;
 import com.hanserwei.service.*;
 import com.hanserwei.service.impl.*;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,9 +19,12 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
+@Slf4j
 public class StoreApplication {
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -39,8 +43,7 @@ public class StoreApplication {
             showWelcome();
             mainMenu();
         } catch (Exception e) {
-            System.err.println("系统启动失败：" + e.getMessage());
-            e.printStackTrace();
+            log.error("系统错误：{}", e.getMessage());
         }
     }
 
@@ -74,16 +77,17 @@ public class StoreApplication {
     }
 
     private static void mainMenu() {
-        while (true) {
+        boolean running = true;
+        while (running) {
             if (currentUser == null) {
-                showLoginMenu();
+                running = showLoginMenuWithExit(); // 修改为带返回值的方法
             } else {
-                showUserMenu();
+                running = showUserMenuWithExit();  // 修改为带返回值的方法
             }
         }
     }
 
-    private static void showLoginMenu() {
+    private static boolean showLoginMenuWithExit() {
         System.out.println("\n请选择操作：");
         System.out.println("1. 用户登录");
         System.out.println("2. 用户注册");
@@ -100,9 +104,10 @@ public class StoreApplication {
             }
             default -> System.out.println("无效选项，请重新选择！");
         }
+        return true;
     }
 
-    private static void showUserMenu() {
+    private static boolean showUserMenuWithExit() {
         System.out.println("\n欢迎，" + currentUser.getUsername() + "！");
         System.out.println("请选择操作：");
         System.out.println("1. 浏览商品");
@@ -129,6 +134,7 @@ public class StoreApplication {
             }
             default -> System.out.println("无效选项，请重新选择！");
         }
+        return true;
     }
 
     private static void userLogin() {
@@ -490,28 +496,10 @@ public class StoreApplication {
     }
 
     private static void addAddress(SqlSession session) {
-        System.out.print("请输入收货人姓名：");
-        String consignee = scanner.nextLine();
-        System.out.print("请输入电话：");
-        String phoneNumber = scanner.nextLine();
-        System.out.print("请输入省份：");
-        String province = scanner.nextLine();
-        System.out.print("请输入城市：");
-        String city = scanner.nextLine();
-        System.out.print("请输入区/县：");
-        String district = scanner.nextLine();
-        System.out.print("请输入详细地址：");
-        String street = scanner.nextLine();
-
+        Map<String, String> addressStrings = getAddressStrings();
         try {
             Addresses address = new Addresses();
-            address.setUserId(currentUser.getId());
-            address.setConsignee(consignee);
-            address.setPhoneNumber(phoneNumber);
-            address.setProvince(province);
-            address.setCity(city);
-            address.setDistrict(district);
-            address.setStreet(street);
+            addressSet(addressStrings, address);
             address.setIsDefault(false);
 
             boolean success = addressService.addAddress(address);
@@ -528,35 +516,45 @@ public class StoreApplication {
         }
     }
 
+    private static void addressSet(Map<String, String> addressStrings, Addresses address) {
+        address.setUserId(currentUser.getId());
+        address.setConsignee(addressStrings.get("consignee"));
+        address.setPhoneNumber(addressStrings.get("phoneNumber"));
+        address.setProvince(addressStrings.get("province"));
+        address.setCity(addressStrings.get("city"));
+        address.setDistrict(addressStrings.get("district"));
+        address.setStreet(addressStrings.get("street"));
+    }
+
+    private static Map<String, String> getAddressStrings() {
+        Map<String, String> addressStrings = new HashMap<>();
+        System.out.print("请输入收货人姓名：");
+        String consignee = scanner.nextLine();
+        addressStrings.put("consignee", consignee);
+        System.out.print("请输入电话：");
+        String phoneNumber = scanner.nextLine();
+        addressStrings.put("phoneNumber", phoneNumber);
+        System.out.print("请输入省份：");
+        String province = scanner.nextLine();
+        addressStrings.put("province", province);
+        System.out.print("请输入城市：");
+        String city = scanner.nextLine();
+        addressStrings.put("city", city);
+        System.out.print("请输入区/县：");
+        String district = scanner.nextLine();
+        addressStrings.put("district", district);
+        System.out.print("请输入详细地址：");
+        String street = scanner.nextLine();
+        addressStrings.put("street", street);
+        return addressStrings;
+    }
+
     private static void updateAddress(SqlSession session) {
         System.out.print("请输入要修改的地址ID：");
         String addressIdStr = scanner.nextLine();
 
         try {
-            Long addressId = Long.parseLong(addressIdStr);
-
-            System.out.print("请输入收货人姓名：");
-            String consignee = scanner.nextLine();
-            System.out.print("请输入电话：");
-            String phoneNumber = scanner.nextLine();
-            System.out.print("请输入省份：");
-            String province = scanner.nextLine();
-            System.out.print("请输入城市：");
-            String city = scanner.nextLine();
-            System.out.print("请输入区/县：");
-            String district = scanner.nextLine();
-            System.out.print("请输入详细地址：");
-            String street = scanner.nextLine();
-
-            Addresses address = new Addresses();
-            address.setId(addressId);
-            address.setUserId(currentUser.getId());
-            address.setConsignee(consignee);
-            address.setPhoneNumber(phoneNumber);
-            address.setProvince(province);
-            address.setCity(city);
-            address.setDistrict(district);
-            address.setStreet(street);
+            Addresses address = getAddresses(addressIdStr);
 
             boolean success = addressService.updateAddress(address);
             if (success) {
@@ -572,6 +570,16 @@ public class StoreApplication {
             System.out.println("地址修改失败：" + e.getMessage());
             session.rollback();
         }
+    }
+
+    private static Addresses getAddresses(String addressIdStr) {
+        Long addressId = Long.parseLong(addressIdStr);
+        Map<String, String> addressStrings = getAddressStrings();
+
+        Addresses address = new Addresses();
+        address.setId(addressId);
+        addressSet(addressStrings, address);
+        return address;
     }
 
     private static void deleteAddress(SqlSession session) {
