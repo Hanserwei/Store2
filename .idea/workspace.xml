@@ -4,12 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8614120-8fea-4d12-bd2c-d153d3c2eb7e" name="更改" comment="feat:完善日志记录并优化地址管理功能&#10;&#10;- 添加 logback 配置文件，实现日志输出到控制台&#10;- 更新 MyBatis 配置，使用 SLF4J 日志实现&#10;- 引入 Lombok Slf4j 注解，简化日志记录代码&#10;- 重构地址管理相关方法，提高代码复用性&#10;- 新增地址信息输入方法，优化用户交互体验">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="f8614120-8fea-4d12-bd2c-d153d3c2eb7e" name="更改" comment="refactor(order): 简化 OrderServiceImpl 类的构造函数&#10;&#10;- 移除了未使用的 CartItemsMapper、ProductsMapper 和 ShoppingCartsMapper 依赖&#10;- 仅保留了必要的 OrdersMapper 依赖&#10;- 更新了 StoreApplication 中的 OrderService 实例创建方式">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/dto/ChildCategoryDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/dto/FatherCategoryDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/ChildrenCategoryVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/FalterCategoryVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/hanserwei/mapper/CategoriesMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e838bcf9-59cf-4e73-96e9-fb0d2791db4d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e838bcf9-59cf-4e73-96e9-fb0d2791db4d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/ceateData.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/ceateData.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/UserLoginVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/UserLoginVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/CategoriesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/CategoriesMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/ProductsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/ProductsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CategoriesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CategoriesMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/ProductsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/ProductsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/UsersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/UsersMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Record" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -57,34 +74,47 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.CategoryServiceImplTest.selectAllCategories.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/Hanserwei/IdeaProjects/Store2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.StoreApplication.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.CategoriesMapperTest.insertOneFatherCategory.executor": "Run",
+    "JUnit.CategoriesMapperTest.selectAllChildren.executor": "Run",
+    "JUnit.CategoriesMapperTest.selectAllChildrenIds.executor": "Run",
+    "JUnit.CategoryServiceImplTest.selectAllCategories.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/Hanserwei/IdeaProjects/Store2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.StoreApplication.executor": "Run"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
-      &quot;MySQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
+      "MySQL"
     ]
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.hanserwei.mapper" />
+    </key>
+  </component>
   <component name="RunManager" selected="应用程序.StoreApplication">
     <configuration name="StoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.hanserwei.StoreApplication" />
@@ -99,10 +129,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="createTable.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <script-file value="$PROJECT_DIR$/sql/createTable.sql" />
-      <script-mode>FILE</script-mode>
-      <method v="2" />
+    <configuration name="CategoriesMapperTest.insertOneFatherCategory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Store" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hanserwei.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hanserwei.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.hanserwei.mapper.CategoriesMapperTest" />
+      <option name="METHOD_NAME" value="insertOneFatherCategory" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CategoriesMapperTest.selectAllChildren" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Store" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hanserwei.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hanserwei.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.hanserwei.mapper.CategoriesMapperTest" />
+      <option name="METHOD_NAME" value="selectAllChildren" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CategoriesMapperTest.selectAllChildrenIds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Store" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hanserwei.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hanserwei.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.hanserwei.mapper.CategoriesMapperTest" />
+      <option name="METHOD_NAME" value="selectAllChildrenIds" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="CategoryServiceImplTest.selectAllCategories" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Store" />
@@ -129,8 +202,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.StoreApplication" />
+        <item itemvalue="JUnit.CategoriesMapperTest.selectAllChildrenIds" />
+        <item itemvalue="JUnit.CategoriesMapperTest.selectAllChildren" />
+        <item itemvalue="JUnit.CategoriesMapperTest.insertOneFatherCategory" />
         <item itemvalue="JUnit.CategoryServiceImplTest.selectAllCategories" />
-        <item itemvalue="数据库脚本.createTable.sql" />
       </list>
     </recent_temporary>
   </component>
@@ -160,7 +235,7 @@
       <workItem from="1755314636091" duration="2000000" />
       <workItem from="1755333606540" duration="1347000" />
       <workItem from="1755341057944" duration="9000" />
-      <workItem from="1755481314251" duration="1132000" />
+      <workItem from="1755481314251" duration="17044000" />
     </task>
     <task id="LOCAL-00001" summary="在线商场Terminal版本，在终端完成运行。">
       <option name="closed" value="true" />
@@ -210,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755311580021</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="refactor(order): 简化 OrderServiceImpl 类的构造函数&#10;&#10;- 移除了未使用的 CartItemsMapper、ProductsMapper 和 ShoppingCartsMapper 依赖&#10;- 仅保留了必要的 OrdersMapper 依赖&#10;- 更新了 StoreApplication 中的 OrderService 实例创建方式">
+      <option name="closed" value="true" />
+      <created>1755482460708</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1755482460708</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +316,7 @@
     <MESSAGE value="README.md更新" />
     <MESSAGE value="强迫症，所有mapper都有mapper接口，虽然没啥用" />
     <MESSAGE value="feat:完善日志记录并优化地址管理功能&#10;&#10;- 添加 logback 配置文件，实现日志输出到控制台&#10;- 更新 MyBatis 配置，使用 SLF4J 日志实现&#10;- 引入 Lombok Slf4j 注解，简化日志记录代码&#10;- 重构地址管理相关方法，提高代码复用性&#10;- 新增地址信息输入方法，优化用户交互体验" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat:完善日志记录并优化地址管理功能&#10;&#10;- 添加 logback 配置文件，实现日志输出到控制台&#10;- 更新 MyBatis 配置，使用 SLF4J 日志实现&#10;- 引入 Lombok Slf4j 注解，简化日志记录代码&#10;- 重构地址管理相关方法，提高代码复用性&#10;- 新增地址信息输入方法，优化用户交互体验" />
+    <MESSAGE value="refactor(order): 简化 OrderServiceImpl 类的构造函数&#10;&#10;- 移除了未使用的 CartItemsMapper、ProductsMapper 和 ShoppingCartsMapper 依赖&#10;- 仅保留了必要的 OrdersMapper 依赖&#10;- 更新了 StoreApplication 中的 OrderService 实例创建方式" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(order): 简化 OrderServiceImpl 类的构造函数&#10;&#10;- 移除了未使用的 CartItemsMapper、ProductsMapper 和 ShoppingCartsMapper 依赖&#10;- 仅保留了必要的 OrdersMapper 依赖&#10;- 更新了 StoreApplication 中的 OrderService 实例创建方式" />
   </component>
 </project>

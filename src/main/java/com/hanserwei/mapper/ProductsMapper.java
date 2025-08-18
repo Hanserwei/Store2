@@ -14,4 +14,14 @@ public interface ProductsMapper {
     Products selectById(Long id);
     
     int updateStock(@Param("id") Long id, @Param("stock") Integer stock);
+
+    List<ProductsVO> selectAllOrderByStock();
+
+    Long addOneProduct(Products products);
+
+    void updateOneProduct(Products product);
+
+    void offShelfProduct(Long productId);
+
+    void deleteOneProduct(Long productId);
 }

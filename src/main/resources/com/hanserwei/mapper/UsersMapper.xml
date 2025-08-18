@@ -29,7 +29,7 @@
     </insert>
 
     <select id="selectByUsernameAndPasswordHash" resultType="com.hanserwei.entity.vo.UserLoginVO">
-        select id, username, email, phone_number
+        select id, username, email, phone_number, role, balance
         from users
         where username = #{username} and password_hash = #{passwordHash}
     </select>

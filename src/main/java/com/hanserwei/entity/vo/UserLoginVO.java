@@ -31,4 +31,14 @@ public class UserLoginVO implements Serializable {
      */
     private String phoneNumber;
 
+    /**
+     * 用户角色
+     */
+    private Integer role;
+
+    /**
+     * 用户余额
+     */
+    private Long balance;
+
 }

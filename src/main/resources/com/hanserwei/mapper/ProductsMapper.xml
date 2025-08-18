@@ -36,4 +36,32 @@
         SET stock = #{stock}, updated_at = NOW()
         WHERE id = #{id}
     </update>
+
+    <select id="selectAllOrderByStock" resultType="com.hanserwei.entity.vo.ProductsVO">
+        SELECT id, name, description, price, stock, is_on_sale
+        FROM products
+        ORDER BY stock DESC;
+    </select>
+
+    <insert id="addOneProduct" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO products ( name, description, price, stock, category_id, is_on_sale, created_at, updated_at)
+        VALUES ( #{name}, #{description}, #{price}, #{stock}, #{categoryId}, #{isOnSale}, #{createdAt},#{updatedAt});
+    </insert>
+
+    <update id="updateOneProduct">
+        UPDATE products
+        SET name = #{name}, description = #{description}, price = #{price}, stock = #{stock}, category_id = #{categoryId}, is_on_sale = #{isOnSale}, updated_at = #{updatedAt}
+        WHERE id = #{id};
+    </update>
+
+    <update id="offShelfProduct">
+        UPDATE products
+        SET is_on_sale = 0
+        WHERE id = #{productId};
+    </update>
+
+    <delete id="deleteOneProduct">
+        DELETE FROM products
+        WHERE id = #{productId};
+    </delete>
 </mapper>

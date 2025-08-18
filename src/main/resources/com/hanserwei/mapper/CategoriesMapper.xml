@@ -14,10 +14,10 @@
     </sql>
 
     <select id="selectAll" resultMap="selectAll">
-        select c.name as fatherName,c2.name as childName,p.id as productId,p.name as productName
-        from categories as  c
-        inner join categories as c2 on c.id = c2.parent_id
-        right join products as p on p.category_id = c2.id
+        select c.name as fatherName, c2.name as childName, p.id as productId, p.name as productName
+        from categories as c
+                 inner join categories as c2 on c.id = c2.parent_id
+                 right join products as p on p.category_id = c2.id
         where p.is_on_sale = 1;
     </select>
 
@@ -31,4 +31,42 @@
             </collection>
         </collection>
     </resultMap>
+
+    <select id="selectAllFatherCategories" resultType="com.hanserwei.entity.vo.FalterCategoryVO">
+        select id, name
+        from categories
+        where parent_id is null;
+    </select>
+
+    <select id="selectFatherCategoryMaxId" resultType="java.lang.Long">
+        select max(id)
+        from categories
+        where parent_id is null;
+    </select>
+
+    <insert id="insertOneFatherCategory" useGeneratedKeys="true" keyProperty="id">
+        insert into
+        categories (name)
+        values ( #{name});
+    </insert>
+
+    <insert id="insertOneChildCategory" useGeneratedKeys="true" keyProperty="id">
+        insert into
+        categories (id, name, parent_id)
+        values (#{id}, #{name}, #{parentId});
+    </insert>
+
+    <select id="selectAllChildren" >
+        select id,name
+        from categories
+        where parent_id = #{fatherCategoryId};
+    </select>
+
+    <select id="selectAllChildrenIds" resultType="java.lang.Long">
+        select id
+        from categories
+        where parent_id = #{fatherCategoryId};
+    </select>
+
+
 </mapper>

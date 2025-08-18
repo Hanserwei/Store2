@@ -9,8 +9,16 @@ public interface ProductService {
     List<ProductsVO> selectAll();
     
     List<ProductsVO> getAllProducts();
-    //TODO:用户表应该加个权限字段，管理员可以调用下面的两个接口
+
     Products getProductById(Long id);
-    
-    boolean updateStock(Long productId, Integer quantity);
+
+    List<ProductsVO> selectAllProducts();
+
+    Long addOneProduct(Products products);
+
+    void updateProduct(Products product);
+
+    void offShelfProduct(Long productId);
+
+    void deleteOneProduct(Long productId);
 }

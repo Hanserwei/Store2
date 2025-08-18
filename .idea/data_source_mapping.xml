@@ -2,12 +2,14 @@
 <project version="4">
   <component name="DataSourcePerFileMappings">
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/e838bcf9-59cf-4e73-96e9-fb0d2791db4d/console.sql" value="e838bcf9-59cf-4e73-96e9-fb0d2791db4d" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/e838bcf9-59cf-4e73-96e9-fb0d2791db4d/console_1.sql" value="e838bcf9-59cf-4e73-96e9-fb0d2791db4d" />
     <file url="file://$PROJECT_DIR$/sql/ceateData.sql" value="e838bcf9-59cf-4e73-96e9-fb0d2791db4d" />
     <file url="file://$PROJECT_DIR$/sql/createTable.sql" value="e838bcf9-59cf-4e73-96e9-fb0d2791db4d" />
     <file url="file://$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/AddressesMapper.xml" value="e838bcf9-59cf-4e73-96e9-fb0d2791db4d" />
     <file url="file://$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CartItemsMapper.xml" value="e838bcf9-59cf-4e73-96e9-fb0d2791db4d" />
     <file url="file://$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CategoriesMapper.xml" value="e838bcf9-59cf-4e73-96e9-fb0d2791db4d" />
     <file url="file://$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/OrdersMapper.xml" value="e838bcf9-59cf-4e73-96e9-fb0d2791db4d" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/ProductsMapper.xml" value="e838bcf9-59cf-4e73-96e9-fb0d2791db4d" />
     <file url="file://$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/UsersMapper.xml" value="e838bcf9-59cf-4e73-96e9-fb0d2791db4d" />
   </component>
 </project>

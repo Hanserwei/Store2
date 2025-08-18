@@ -18,33 +18,47 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductsVO> selectAll() {
         return productsMapper.selectAll();
     }
-    
+
     @Override
     public List<ProductsVO> getAllProducts() {
         return productsMapper.selectAll();
     }
-    
+
     @Override
     public Products getProductById(Long id) {
         return productsMapper.selectById(id);
     }
-    
+
     @Override
-    public boolean updateStock(Long productId, Integer quantity) {
-        if (productId == null || quantity == null || quantity < 0) {
-            throw new RuntimeException("参数错误");
+    public List<ProductsVO> selectAllProducts() {
+        return productsMapper.selectAllOrderByStock();
+    }
+
+    @Override
+    public Long addOneProduct(Products products) {
+        return productsMapper.addOneProduct(products);
+    }
+
+    @Override
+    public void updateProduct(Products product) {
+        productsMapper.updateOneProduct(product);
+    }
+
+    @Override
+    public void offShelfProduct(Long productId) {
+        if (productsMapper.selectById(productId).getIsOnSale() == true) {
+            productsMapper.offShelfProduct(productId);
+        }else {
+            throw new RuntimeException("商品不存在或已下架");
         }
-        
-        Products product = productsMapper.selectById(productId);
-        if (product == null) {
+    }
+
+    @Override
+    public void deleteOneProduct(Long productId) {
+        if (productsMapper.selectById(productId) != null){
+            productsMapper.deleteOneProduct(productId);
+        }else {
             throw new RuntimeException("商品不存在");
         }
-        
-        if (product.getStock() < quantity) {
-            throw new RuntimeException("库存不足");
-        }
-        
-        int newStock = product.getStock() - quantity;
-        return productsMapper.updateStock(productId, newStock) > 0;
     }
 }

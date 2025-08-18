@@ -119,3 +119,12 @@ VALUES (3, 2003, 1, 359.00, '2024-01-03 14:00:00'), -- Pure Cotton Four-Piece Se
        (3, 4001, 1, 158.00, '2024-01-03 14:00:00'), -- The Three-Body Problem
        (3, 3003, 1, 799.00, '2024-01-03 14:00:00'); -- Nike Air Max运动鞋
  */
+
+
+#  2025年08月18日 09:05:05 增加用户表的身份以及余额
+alter table users
+    add role int default 0 not null comment '用户身份1：admin，0：user';
+
+alter table users
+    add balance bigint default 100000 not null comment '余额，用于模拟支付';
+
