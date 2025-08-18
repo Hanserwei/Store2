@@ -65,7 +65,7 @@ public class StoreApplication {
         userService = new UserServiceImpl(usersMapper);
         productService = new ProductServiceImpl(productsMapper);
         cartService = new CartServiceImpl(shoppingCartsMapper, cartItemsMapper, productsMapper);
-        orderService = new OrderServiceImpl(ordersMapper, cartItemsMapper, productsMapper, shoppingCartsMapper);
+        orderService = new OrderServiceImpl(ordersMapper);
         addressService = new AddressServiceImpl(addressesMapper);
         categoryService = new CategoryServiceImpl(categoriesMapper);
     }
