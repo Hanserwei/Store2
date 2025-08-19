@@ -6,6 +6,7 @@ import com.hanserwei.entity.dto.OrderDTO;
 import com.hanserwei.entity.dto.UserLoginDTO;
 import com.hanserwei.entity.dto.UserRegisterDTO;
 import com.hanserwei.entity.po.Addresses;
+import com.hanserwei.entity.po.OrderItem;
 import com.hanserwei.entity.po.Products;
 import com.hanserwei.entity.vo.*;
 import com.hanserwei.mapper.*;
@@ -25,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class StoreApplication {
@@ -115,13 +117,13 @@ public class StoreApplication {
         System.out.println("1. 浏览商品");
         System.out.println("2. 查看购物车");
         System.out.println("3. 管理地址");
-        System.out.println("4. 查看订单");
+        System.out.println("4. 管理订单");
         if (currentUser.getRole() == 1) {
             System.out.println("5. 管理商品");
         }
         System.out.println("9. 退出登录");
         System.out.println("0. 退出系统");
-        System.out.print("请输入选项test：");
+        System.out.print("请输入选项：");
 
         String choice = scanner.next();
         switch (choice) {
@@ -163,22 +165,11 @@ public class StoreApplication {
             System.out.print("请输入选项：");
             String choice = scanner.next();
             switch (choice) {
-                case "1" -> {
-                    addProduct();
-                }
-                case "2" -> {
-                    updateProduct();
-                }
-                case "3" -> {
-                    offShelfProduct();
-                }
-                case "4" -> {
-                    deleteOneProduct();
-                }
-                case "5" -> {
-                    // mainMenu();
-                    System.out.println("返回上一级菜单");
-                }
+                case "1" -> addProduct();
+                case "2" -> updateProduct();
+                case "3" -> offShelfProduct();
+                case "4" -> deleteOneProduct();
+                case "5" -> System.out.println("返回上一级菜单");
                 default -> System.out.println("无效选项，请重新选择！");
             }
         }
@@ -861,22 +852,33 @@ public class StoreApplication {
     private static void viewOrders() {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             initServices(session);
-
             try {
                 List<OrderVO> orders = orderService.getOrdersByUserId(currentUser.getId());
-
                 if (orders.isEmpty()) {
                     System.out.println("暂无订单");
                     return;
                 }
+                // 商品清单
+                List<Long> orderIdsList = orders.stream().map(OrderVO::getId).toList();
+                // 在order_items表中查询得到每个订单的商品清单
+                List<OrderItem> orderItems = orderService.selectByOrderId(orderIdsList);
 
                 System.out.println("\n========== 订单列表 ==========");
+                // 创建一个Map来快速查找订单对应的商品清单
+                Map<Long, List<Item>> orderItemsMap = orderItems.stream()
+                        .collect(Collectors.toMap(OrderItem::getOrderId, OrderItem::getItems));
                 for (OrderVO order : orders) {
-                    System.out.printf("订单号: %d | 总金额: ¥%.2f | 状态: %s | 创建时间: %s%n",
-                            order.getId(), order.getTotalAmount(), getOrderStatusText(order.getStatus()),
-                            order.getCreatedAt());
-                    System.out.println("地址: " + order.getAddress());
-                    System.out.println("--------------------");
+                    showOrders(order, orderItemsMap);
+                }
+                // 订单处理，引入支付部分
+                System.out.println("请输入选择：");
+                System.out.println("1. 处理订单");
+                System.out.println("2. 返回");
+                int choice = scanner.nextInt();
+                switch (choice) {
+                    case 1 -> processingOrders(orders, session, orderItemsMap);
+                    case 2 -> {
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("获取订单列表失败：" + e.getMessage());
@@ -886,10 +888,97 @@ public class StoreApplication {
         }
     }
 
+    private static void showOrders(OrderVO order, Map<Long, List<Item>> orderItemsMap) {
+        System.out.printf("订单号: %d | 总金额: ¥%.2f | 状态: %s | 创建时间: %s%n",
+                order.getId(), order.getTotalAmount(), getOrderStatusText(order.getStatus()),
+                order.getCreatedAt());
+
+        System.out.println("地址: " + order.getAddress());
+
+        // 展示该订单的商品清单
+        List<Item> items = orderItemsMap.get(order.getId());
+        if (items != null && !items.isEmpty()) {
+            for (int i = 0; i < items.size(); i++) {
+                Item item = items.get(i);
+                String prefix = (i == items.size() - 1) ? "└── " : "├── ";
+                System.out.printf("  %s%s (ID: %d) x%d%n",
+                        prefix, item.getProductName(), item.getProductId(), item.getQuantity());
+            }
+        }
+
+        System.out.println("--------------------");
+    }
+
+    private static void processingOrders(List<OrderVO> orders, SqlSession session, Map<Long, List<Item>> orderItemsMap) {
+        System.out.println("请选择要处理的订单：");
+        long orderId = Long.parseLong(scanner.next());
+        OrderVO order = getOrderVOById(orders, orderId);
+        System.out.println("--------------------");
+        if (order != null) {
+            showOrders(order, orderItemsMap);
+        }
+        System.out.println("请选择处理方式：");
+        System.out.println("1. 取消订单");
+        System.out.println("2. 支付订单");
+        System.out.println("3. 返回");
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                // 取消订单
+                boolean success = false;
+                if (order != null) {
+                    success = orderService.cancelOrder(order.getId());
+                }
+                if (success) {
+                    System.out.println("订单取消成功！");
+                    session.commit();
+                } else {
+                    System.out.println("订单取消失败！");
+                    session.rollback();
+                }
+                break;
+            case 2:
+                // 支付订单
+                System.out.println("请选择支付方式：");
+                System.out.println("目前只支持余额支付！");
+                System.out.println("1. 余额支付");
+                int payChoice = scanner.nextInt();
+                if (payChoice == 1) {
+                    // 查询余额
+                    BigDecimal balance = userService.getUserBalance(currentUser.getId());
+                    boolean paySuccess = false;
+                    if (order != null) {
+                        paySuccess = orderService.payOrder(order.getId(), currentUser.getId(), balance);
+                    }
+                    if (paySuccess) {
+                        System.out.println("支付成功！");
+                        session.commit();
+                    } else {
+                        System.out.println("支付失败！");
+                        session.rollback();
+                    }
+                }
+                break;
+            case 3:
+                // 返回
+                break;
+        }
+    }
+
+    private static OrderVO getOrderVOById(List<OrderVO> orders, long orderId) {
+        for (OrderVO order : orders) {
+            if (order.getId().equals(orderId)) {
+                return order;
+            }
+        }
+        return null;
+    }
+
     private static String getOrderStatusText(Integer status) {
         return switch (status) {
             case 0 -> "待支付";
             case 1 -> "已支付";
+            // TODO：订单处理状态
             case 2 -> "已发货";
             case 3 -> "已完成";
             case 4 -> "已取消";

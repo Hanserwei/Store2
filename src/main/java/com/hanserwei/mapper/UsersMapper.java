@@ -5,6 +5,8 @@ import com.hanserwei.entity.vo.UserLoginVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.math.BigDecimal;
+
 @Mapper
 public interface UsersMapper {
     Long selectOneByUsername(String username);
@@ -16,4 +18,6 @@ public interface UsersMapper {
     String selectOneByEmail(String email);
 
     String selectOneByPhoneNumber(String phoneNumber);
+
+    BigDecimal selectUserBalanceByUserId(Long userId);
 }

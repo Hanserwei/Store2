@@ -9,6 +9,7 @@ import com.hanserwei.entity.vo.UserLoginVO;
 import com.hanserwei.mapper.UsersMapper;
 import com.hanserwei.service.UserService;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class UserServiceImpl implements UserService {
@@ -68,5 +69,13 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("用户或密码错误");
         }
         return userLoginVO;
+    }
+
+    @Override
+    public BigDecimal getUserBalance(Long userId) {
+        if (userId == null||userId <= 0){
+            throw new RuntimeException("参数错误");
+        }
+        return usersMapper.selectUserBalanceByUserId(userId);
     }
 }

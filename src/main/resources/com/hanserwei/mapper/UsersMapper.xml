@@ -45,4 +45,10 @@
         from users
         where phone_number = #{phoneNumber}
     </select>
+
+    <select id="selectUserBalanceByUserId" resultType="java.math.BigDecimal">
+        select balance
+        from users
+        where id = #{userId}
+    </select>
 </mapper>

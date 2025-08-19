@@ -4,26 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8614120-8fea-4d12-bd2c-d153d3c2eb7e" name="更改" comment="refactor(order): 简化 OrderServiceImpl 类的构造函数&#10;&#10;- 移除了未使用的 CartItemsMapper、ProductsMapper 和 ShoppingCartsMapper 依赖&#10;- 仅保留了必要的 OrdersMapper 依赖&#10;- 更新了 StoreApplication 中的 OrderService 实例创建方式">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/dto/ChildCategoryDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/dto/FatherCategoryDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/ChildrenCategoryVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/FalterCategoryVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/hanserwei/mapper/CategoriesMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e838bcf9-59cf-4e73-96e9-fb0d2791db4d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e838bcf9-59cf-4e73-96e9-fb0d2791db4d.xml" afterDir="false" />
+    <list default="true" id="f8614120-8fea-4d12-bd2c-d153d3c2eb7e" name="更改" comment="1. 用户表增加两列，身份列，余额列。&#10;2. 完成商品的添加删除修改。在新添加商品的时候可以新建商品分类。">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/OrderItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/hanserwei/mapper/OrdersMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/ceateData.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/ceateData.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/UserLoginVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/UserLoginVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/CategoriesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/CategoriesMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/ProductsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/ProductsMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CategoriesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CategoriesMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/ProductsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/ProductsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/OrdersMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/OrdersMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/UsersMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/UsersMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/OrdersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/OrdersMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/UsersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/UsersMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,8 +75,11 @@
     "JUnit.CategoriesMapperTest.selectAllChildren.executor": "Run",
     "JUnit.CategoriesMapperTest.selectAllChildrenIds.executor": "Run",
     "JUnit.CategoryServiceImplTest.selectAllCategories.executor": "Run",
+    "JUnit.OrdersMapperTest.selectByOrderId.executor": "Run",
+    "JUnit.OrdersMapperTest.selectItemByOrderId.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
@@ -129,22 +127,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategoriesMapperTest.insertOneFatherCategory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Store" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hanserwei.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hanserwei.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.hanserwei.mapper.CategoriesMapperTest" />
-      <option name="METHOD_NAME" value="insertOneFatherCategory" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CategoriesMapperTest.selectAllChildren" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Store" />
       <extension name="coverage">
@@ -177,17 +159,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategoryServiceImplTest.selectAllCategories" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrdersMapperTest.selectByOrderId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Store" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hanserwei.service.impl.*" />
+          <option name="PATTERN" value="com.hanserwei.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.hanserwei.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.hanserwei.service.impl.CategoryServiceImplTest" />
-      <option name="METHOD_NAME" value="selectAllCategories" />
+      <option name="PACKAGE_NAME" value="com.hanserwei.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.hanserwei.mapper.OrdersMapperTest" />
+      <option name="METHOD_NAME" value="selectByOrderId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrdersMapperTest.selectItemByOrderId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Store" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hanserwei.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hanserwei.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.hanserwei.mapper.OrdersMapperTest" />
+      <option name="METHOD_NAME" value="selectItemByOrderId" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -202,10 +200,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.StoreApplication" />
+        <item itemvalue="JUnit.OrdersMapperTest.selectByOrderId" />
+        <item itemvalue="JUnit.OrdersMapperTest.selectItemByOrderId" />
         <item itemvalue="JUnit.CategoriesMapperTest.selectAllChildrenIds" />
         <item itemvalue="JUnit.CategoriesMapperTest.selectAllChildren" />
-        <item itemvalue="JUnit.CategoriesMapperTest.insertOneFatherCategory" />
-        <item itemvalue="JUnit.CategoryServiceImplTest.selectAllCategories" />
       </list>
     </recent_temporary>
   </component>
@@ -235,7 +233,11 @@
       <workItem from="1755314636091" duration="2000000" />
       <workItem from="1755333606540" duration="1347000" />
       <workItem from="1755341057944" duration="9000" />
-      <workItem from="1755481314251" duration="17044000" />
+      <workItem from="1755481314251" duration="17506000" />
+      <workItem from="1755499644172" duration="101000" />
+      <workItem from="1755500591220" duration="19000" />
+      <workItem from="1755562230652" duration="1545000" />
+      <workItem from="1755571236365" duration="14818000" />
     </task>
     <task id="LOCAL-00001" summary="在线商场Terminal版本，在终端完成运行。">
       <option name="closed" value="true" />
@@ -293,7 +295,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755482460708</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1. 用户表增加两列，身份列，余额列。&#10;2. 完成商品的添加删除修改。在新添加商品的时候可以新建商品分类。">
+      <option name="closed" value="true" />
+      <created>1755499226492</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1755499226492</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,6 +327,7 @@
     <MESSAGE value="强迫症，所有mapper都有mapper接口，虽然没啥用" />
     <MESSAGE value="feat:完善日志记录并优化地址管理功能&#10;&#10;- 添加 logback 配置文件，实现日志输出到控制台&#10;- 更新 MyBatis 配置，使用 SLF4J 日志实现&#10;- 引入 Lombok Slf4j 注解，简化日志记录代码&#10;- 重构地址管理相关方法，提高代码复用性&#10;- 新增地址信息输入方法，优化用户交互体验" />
     <MESSAGE value="refactor(order): 简化 OrderServiceImpl 类的构造函数&#10;&#10;- 移除了未使用的 CartItemsMapper、ProductsMapper 和 ShoppingCartsMapper 依赖&#10;- 仅保留了必要的 OrdersMapper 依赖&#10;- 更新了 StoreApplication 中的 OrderService 实例创建方式" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(order): 简化 OrderServiceImpl 类的构造函数&#10;&#10;- 移除了未使用的 CartItemsMapper、ProductsMapper 和 ShoppingCartsMapper 依赖&#10;- 仅保留了必要的 OrdersMapper 依赖&#10;- 更新了 StoreApplication 中的 OrderService 实例创建方式" />
+    <MESSAGE value="1. 用户表增加两列，身份列，余额列。&#10;2. 完成商品的添加删除修改。在新添加商品的时候可以新建商品分类。" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. 用户表增加两列，身份列，余额列。&#10;2. 完成商品的添加删除修改。在新添加商品的时候可以新建商品分类。" />
   </component>
 </project>

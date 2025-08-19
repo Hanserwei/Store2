@@ -21,11 +21,84 @@
         insert into orders (user_id, address, total_amount, `status`, created_at, updated_at)
         values (#{userId}, #{address}, #{totalAmount}, #{status}, #{createdAt}, #{updatedAt})
     </insert>
-    
+
     <select id="selectByUserId" resultType="com.hanserwei.entity.vo.OrderVO">
         SELECT id, user_id, address, total_amount, status, created_at, updated_at
         FROM orders
         WHERE user_id = #{userId}
         ORDER BY created_at DESC
     </select>
+
+    <delete id="cancelOrder">
+        DELETE FROM orders
+        WHERE id = #{id} AND user_id = #{userId}
+        AND status = 0
+    </delete>
+
+    <delete id="cancelOrderItems">
+        DELETE FROM order_items
+        WHERE order_id = #{id}
+    </delete>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT user_id, address, total_amount
+        FROM orders
+        WHERE id = #{id} AND status = 0
+    </select>
+
+    <update id="updateBalance">
+        UPDATE users
+        SET balance = #{balance}
+        WHERE id = #{userId}
+    </update>
+
+    <update id="updateById">
+        UPDATE orders
+        SET address = #{address}, total_amount = #{totalAmount}, status = #{status}, updated_at = #{updatedAt}
+        WHERE id = #{id}
+    </update>
+
+    <select id="selectByOrderId" resultMap="OrderItemMapper">
+        SELECT product_id, quantity
+        FROM order_items
+        WHERE order_id = #{orderId}
+    </select>
+
+    <resultMap id="OrderItemMapper" type="com.hanserwei.entity.po.OrderItem">
+        <collection property="items" ofType="com.hanserwei.mapper.Item">
+            <result property="productId" column="product_id"/>
+            <result property="quantity" column="quantity"/>
+        </collection>
+    </resultMap>
+
+    <update id="batchUpdateProductStock">
+        UPDATE products
+        <trim prefix="SET stock = CASE" suffix="END">
+            <foreach collection="map" item="entry" separator=" " index="key">
+                WHEN id = #{key} THEN stock - #{entry}
+            </foreach>
+        </trim>
+        WHERE id IN
+        <foreach collection="map" item="entry" open="(" separator="," close=")" index="key">
+            #{key}
+        </foreach>
+    </update>
+
+    <select id="selectItemByOrderId" resultMap="OrderItemMapper2">
+        select order_id,products.name as productName,quantity,products.id as product_id
+        from order_items
+        inner join products on order_items.product_id = products.id
+        where order_id = #{orderId};
+    </select>
+
+    <resultMap id="OrderItemMapper2" type="com.hanserwei.entity.po.OrderItem">
+        <result property="orderId" column="order_id"/>
+        <collection property="items" ofType="com.hanserwei.mapper.Item">
+            <result property="productId" column="product_id"/>
+            <result property="productName" column="productName"/>
+            <result property="quantity" column="quantity"/>
+        </collection>
+    </resultMap>
+
+
 </mapper>
