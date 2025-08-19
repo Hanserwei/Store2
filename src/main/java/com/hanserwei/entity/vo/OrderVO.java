@@ -40,4 +40,9 @@ public class OrderVO {
      * 订单创建时间
      */
     private LocalDateTime createdAt;
+
+    /**
+     * 订单更新时间
+     */
+    private LocalDateTime updatedAt;
 }
