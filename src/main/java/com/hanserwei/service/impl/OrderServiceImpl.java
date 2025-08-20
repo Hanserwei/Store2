@@ -1,23 +1,32 @@
 package com.hanserwei.service.impl;
 
+import com.hanserwei.entity.dto.CartItemDTO;
 import com.hanserwei.entity.dto.OrderDTO;
-import com.hanserwei.entity.po.OrderItem;
-import com.hanserwei.entity.po.Orders;
+import com.hanserwei.entity.po.*;
 import com.hanserwei.entity.vo.OrderVO;
-import com.hanserwei.mapper.Item;
+import com.hanserwei.mapper.AddressesMapper;
+import com.hanserwei.mapper.CartItemsMapper;
 import com.hanserwei.mapper.OrdersMapper;
+import com.hanserwei.mapper.ProductsMapper;
 import com.hanserwei.service.OrderService;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class OrderServiceImpl implements OrderService {
     private final OrdersMapper ordersMapper;
+    private final ProductsMapper productsMapper;
+    private final AddressesMapper addressesMapper;
+    private final CartItemsMapper cartItemsMapper;
 
 
-    public OrderServiceImpl(OrdersMapper ordersMapper) {
+    public OrderServiceImpl(OrdersMapper ordersMapper, ProductsMapper productsMapper, AddressesMapper addressesMapper, CartItemsMapper cartItemsMapper) {
         this.ordersMapper = ordersMapper;
+        this.productsMapper = productsMapper;
+        this.addressesMapper = addressesMapper;
+        this.cartItemsMapper = cartItemsMapper;
     }
 
     @Override
@@ -35,7 +44,30 @@ public class OrderServiceImpl implements OrderService {
         orders.setCreatedAt(LocalDateTime.now());
         orders.setUpdatedAt(LocalDateTime.now());
 
-        return ordersMapper.insertOneOrder(orders);
+        // 插入订单表
+        ordersMapper.insertOneOrder(orders);
+        Long ordersId = orders.getId();
+
+        // 插入订单商品表
+        List<CartItems> cartItems = cartItemsMapper.selectProductIdAndNameAndQuantity(userId);
+        CartItems cartItems1 = cartItems.getFirst();
+        List<Item> items = cartItems1.getItems();
+        Map<Long, Long> productIdAndQuantity = items.stream().collect(Collectors.toMap(Item::getProductId, Item::getQuantity));
+        // 计算小计
+        List<OrderItemBatch> orderItemBatches = new ArrayList<>();
+        for (Item item : items) {
+            Long productId = item.getProductId();
+            Long quantity = item.getQuantity();
+            BigDecimal price = item.getPrice();
+            BigDecimal subtotal = price.multiply(new BigDecimal(quantity));
+            OrderItemBatch orderItemBatch = new OrderItemBatch(ordersId, productId, quantity, subtotal);
+            orderItemBatches.add(orderItemBatch);
+        }
+        int insert_result = ordersMapper.batchInsertOrderItem(orderItemBatches);
+        if (insert_result != productIdAndQuantity.size()) {
+            throw new RuntimeException("插入订单商品表失败！");
+        }
+        return ordersId;
     }
 
     @Override
@@ -115,5 +147,44 @@ public class OrderServiceImpl implements OrderService {
             result.add(orderItems);
         });
         return result;
+    }
+
+    @Override
+    public boolean directBuy(CartItemDTO cartItemDTO) {
+        Long userId = cartItemDTO.userId();
+        Long productId = cartItemDTO.productId();
+        Integer quantity = cartItemDTO.quantity();
+        // 参数校验
+        if (userId <= 0 || productId <= 0 || quantity <= 0) {
+            throw new RuntimeException("参数错误！");
+        }
+        // 查询库存
+        int stock = productsMapper.selectById(productId).getStock();
+        if (stock < quantity) {
+            throw new RuntimeException("库存不足！");
+        }
+        // 创建订单
+        // 查询默认地址
+        String address = addressesMapper.selectDefaultAddress(userId);
+        Orders orders = new Orders();
+        orders.setUserId(userId);
+        orders.setAddress(address);
+        BigDecimal price = productsMapper.selectById(productId).getPrice();
+        BigDecimal totalAmount = price.multiply(new BigDecimal(quantity));
+        orders.setTotalAmount(totalAmount);
+        orders.setStatus(0);
+        orders.setCreatedAt(LocalDateTime.now());
+        orders.setUpdatedAt(LocalDateTime.now());
+        // 插入订单表
+        ordersMapper.insertOneOrder(orders);
+        // 插入订单项表
+        Long orderId = orders.getId();
+        BigDecimal subtotal = productsMapper.selectById(productId).getPrice().multiply(new BigDecimal(quantity));
+        LocalDateTime createdAt = LocalDateTime.now();
+        int result = ordersMapper.insertOneOrderItem(orderId, productId, quantity, subtotal, createdAt);
+        if (result <= 0) {
+            throw new RuntimeException("创建订单失败！");
+        }
+        return orderId > 0;
     }
 }

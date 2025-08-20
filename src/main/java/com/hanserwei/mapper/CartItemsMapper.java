@@ -20,4 +20,6 @@ public interface CartItemsMapper {
     int deleteByCartIdAndProductId(@Param("cartId") Long cartId, @Param("productId") Long productId);
     
     int deleteByCartId(Long cartId);
+
+    List<CartItems> selectProductIdAndNameAndQuantity(Long userId);
 }

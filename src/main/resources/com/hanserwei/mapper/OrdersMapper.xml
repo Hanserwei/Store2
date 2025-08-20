@@ -65,7 +65,7 @@
     </select>
 
     <resultMap id="OrderItemMapper" type="com.hanserwei.entity.po.OrderItem">
-        <collection property="items" ofType="com.hanserwei.mapper.Item">
+        <collection property="items" ofType="com.hanserwei.entity.po.Item">
             <result property="productId" column="product_id"/>
             <result property="quantity" column="quantity"/>
         </collection>
@@ -93,12 +93,25 @@
 
     <resultMap id="OrderItemMapper2" type="com.hanserwei.entity.po.OrderItem">
         <result property="orderId" column="order_id"/>
-        <collection property="items" ofType="com.hanserwei.mapper.Item">
+        <collection property="items" ofType="com.hanserwei.entity.po.Item">
             <result property="productId" column="product_id"/>
             <result property="productName" column="productName"/>
             <result property="quantity" column="quantity"/>
         </collection>
     </resultMap>
+
+    <insert id="insertOneOrderItem">
+        insert into order_items (order_id,product_id,quantity,price,created_at)
+        values (#{orderId}, #{productId}, #{quantity},#{subtotal},#{createdAt})
+    </insert>
+
+    <insert id="batchInsertOrderItem">
+        insert into order_items (order_id,product_id,quantity,price,created_at)
+        values
+        <foreach item="item" collection="list" separator=",">
+            (#{item.orderId}, #{item.productId}, #{item.quantity},#{item.subtotal},NOW())
+        </foreach>
+    </insert>
 
 
 </mapper>

@@ -46,4 +46,23 @@
   <delete id="deleteByCartId">
     DELETE FROM cart_items WHERE cart_id = #{cartId}
   </delete>
+
+  <select id="selectProductIdAndNameAndQuantity" resultMap="ProductIdAndNameAndQuantity">
+      select user_id,cart_id, product_id, products.name as name, quantity,price
+      from cart_items
+               join shopping_carts on cart_items.cart_id = shopping_carts.id
+               left join products on cart_items.product_id = products.id
+      where shopping_carts.user_id = #{userId}
+  </select>
+    <resultMap id="ProductIdAndNameAndQuantity" type="com.hanserwei.entity.po.CartItems">
+        <id column="user_id" jdbcType="BIGINT" property="userId" />
+        <id column="cart_id" jdbcType="BIGINT" property="cartId" />
+        <collection property="items" ofType="com.hanserwei.entity.po.Item">
+            <id column="product_id" jdbcType="BIGINT" property="productId" />
+            <result column="name" jdbcType="VARCHAR" property="productName" />
+            <result column="quantity" jdbcType="INTEGER" property="quantity" />
+            <result column="price" jdbcType="DECIMAL" property="price" />
+        </collection>
+    </resultMap>
+
 </mapper>

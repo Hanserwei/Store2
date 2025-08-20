@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8614120-8fea-4d12-bd2c-d153d3c2eb7e" name="更改" comment="订单管理完成，模拟支付完成。">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/OrderVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/vo/OrderVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/OrderItemBatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/hanserwei/mapper/CartItemsMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/CartItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/CartItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/OrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/AddressesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/AddressesMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/CartItemsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/CartItemsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/OrdersMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/OrdersMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/AddressesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/AddressesMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CartItemsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CartItemsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/OrdersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/OrdersMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/hanserwei/mapper/OrdersMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hanserwei/mapper/OrdersMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +60,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -58,6 +76,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.CartItemsMapperTest.selectProductIdAndNameAndQuantity.executor": "Run",
     "JUnit.CategoriesMapperTest.insertOneFatherCategory.executor": "Run",
     "JUnit.CategoriesMapperTest.selectAllChildren.executor": "Run",
     "JUnit.CategoriesMapperTest.selectAllChildrenIds.executor": "Run",
@@ -114,7 +133,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategoriesMapperTest.selectAllChildren" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CartItemsMapperTest.selectProductIdAndNameAndQuantity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Store" />
       <extension name="coverage">
         <pattern>
@@ -123,8 +142,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.hanserwei.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.hanserwei.mapper.CategoriesMapperTest" />
-      <option name="METHOD_NAME" value="selectAllChildren" />
+      <option name="MAIN_CLASS_NAME" value="com.hanserwei.mapper.CartItemsMapperTest" />
+      <option name="METHOD_NAME" value="selectProductIdAndNameAndQuantity" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -134,7 +153,7 @@
       <module name="Store" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hanserwei.mapper.*" />
+          <option name="PATTERN" value="com.hanserwei.entity.po.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -150,7 +169,7 @@
       <module name="Store" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hanserwei.mapper.*" />
+          <option name="PATTERN" value="com.hanserwei.entity.po.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -166,7 +185,7 @@
       <module name="Store" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hanserwei.mapper.*" />
+          <option name="PATTERN" value="com.hanserwei.entity.po.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -187,10 +206,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.StoreApplication" />
+        <item itemvalue="JUnit.CartItemsMapperTest.selectProductIdAndNameAndQuantity" />
         <item itemvalue="JUnit.OrdersMapperTest.selectByOrderId" />
         <item itemvalue="JUnit.OrdersMapperTest.selectItemByOrderId" />
         <item itemvalue="JUnit.CategoriesMapperTest.selectAllChildrenIds" />
-        <item itemvalue="JUnit.CategoriesMapperTest.selectAllChildren" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +243,9 @@
       <workItem from="1755499644172" duration="101000" />
       <workItem from="1755500591220" duration="19000" />
       <workItem from="1755562230652" duration="1545000" />
-      <workItem from="1755571236365" duration="15155000" />
+      <workItem from="1755571236365" duration="15435000" />
+      <workItem from="1755587969446" duration="14000" />
+      <workItem from="1755653970168" duration="9034000" />
     </task>
     <task id="LOCAL-00001" summary="在线商场Terminal版本，在终端完成运行。">
       <option name="closed" value="true" />
@@ -298,7 +319,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755587552783</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="订单管理完成，模拟支付完成。">
+      <option name="closed" value="true" />
+      <created>1755587587160</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1755587587160</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

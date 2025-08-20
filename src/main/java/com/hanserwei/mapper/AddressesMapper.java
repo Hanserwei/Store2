@@ -22,4 +22,6 @@ public interface AddressesMapper {
     int clearDefaultByUserId(Long userId);
     
     int setDefaultById(@Param("id") Long id, @Param("userId") Long userId);
+
+    String selectDefaultAddress(Long userId);
 }

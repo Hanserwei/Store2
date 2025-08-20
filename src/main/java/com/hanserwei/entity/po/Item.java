@@ -4,12 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderItem {
-    private Long orderId;
-    private List<Item> items;
+public class Item {
+    private Long productId;
+    private String productName;
+    private Long quantity;
+    private BigDecimal price;
 }

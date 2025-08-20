@@ -1,10 +1,13 @@
 package com.hanserwei.entity.po;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serial;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 购物车商品表
@@ -13,16 +16,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CartItems implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**
-    * 购物车商品项唯一标识
-    */
+     * 用户ID
+     */
+    private Long userId;
+
+    /**
+     * 购物车商品项唯一标识
+     */
     private Long id;
 
     /**
-    * 关联到shopping_carts表的购物车ID
-    */
+     * 关联到shopping_carts表的购物车ID
+     */
     private Long cartId;
 
     /**
@@ -36,7 +45,12 @@ public class CartItems implements Serializable {
     private Integer quantity;
 
     /**
-    * 商品添加到购物车的时间
-    */
+     * 商品添加到购物车的时间
+     */
     private LocalDateTime addedAt;
+
+    /**
+     * 商品
+     */
+    private List<Item> items;
 }

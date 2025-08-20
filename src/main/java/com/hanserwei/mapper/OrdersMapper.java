@@ -1,12 +1,14 @@
 package com.hanserwei.mapper;
 
 import com.hanserwei.entity.po.OrderItem;
+import com.hanserwei.entity.po.OrderItemBatch;
 import com.hanserwei.entity.po.Orders;
 import com.hanserwei.entity.vo.OrderVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -31,4 +33,12 @@ public interface OrdersMapper {
     int batchUpdateProductStock(@Param("map") Map<Long, Long> productIdAndQuantity);
 
     OrderItem selectItemByOrderId(Long orderId);
+
+    int insertOneOrderItem(@Param("orderId") Long orderId,
+                           @Param("productId") Long productId,
+                           @Param("quantity") Integer quantity,
+                           @Param("subtotal") BigDecimal subtotal,
+                           @Param("createdAt") LocalDateTime createdAt);
+
+    int batchInsertOrderItem(List<OrderItemBatch> orderItemBatches);
 }

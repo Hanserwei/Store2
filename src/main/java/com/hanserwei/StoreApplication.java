@@ -6,6 +6,7 @@ import com.hanserwei.entity.dto.OrderDTO;
 import com.hanserwei.entity.dto.UserLoginDTO;
 import com.hanserwei.entity.dto.UserRegisterDTO;
 import com.hanserwei.entity.po.Addresses;
+import com.hanserwei.entity.po.Item;
 import com.hanserwei.entity.po.OrderItem;
 import com.hanserwei.entity.po.Products;
 import com.hanserwei.entity.vo.*;
@@ -69,7 +70,7 @@ public class StoreApplication {
         userService = new UserServiceImpl(usersMapper);
         productService = new ProductServiceImpl(productsMapper);
         cartService = new CartServiceImpl(shoppingCartsMapper, cartItemsMapper, productsMapper);
-        orderService = new OrderServiceImpl(ordersMapper);
+        orderService = new OrderServiceImpl(ordersMapper, productsMapper, addressesMapper,cartItemsMapper);
         addressService = new AddressServiceImpl(addressesMapper);
         categoryService = new CategoryServiceImpl(categoriesMapper);
     }
@@ -441,6 +442,7 @@ public class StoreApplication {
                 System.out.println("\n操作选项：");
                 System.out.println("1. 添加商品到购物车");
                 System.out.println("2. 查看商品分类");
+                System.out.println("3. 直接购买");
                 System.out.println("0. 返回主菜单");
                 System.out.print("请输入选项：");
 
@@ -448,12 +450,36 @@ public class StoreApplication {
                 switch (choice) {
                     case "1" -> addToCart(session);
                     case "2" -> showCategories();
+                    case "3" -> directBuy(session);
                 }
             } catch (Exception e) {
                 System.out.println("获取商品列表失败：" + e.getMessage());
             }
         } catch (Exception e) {
             System.out.println("系统错误：" + e.getMessage());
+        }
+    }
+
+    private static void directBuy(SqlSession session) {
+        System.out.print("请输入商品ID：");
+        String productIdStr = scanner.next();
+        System.out.print("请输入数量：");
+        String quantityStr = scanner.next();
+        try {
+            Long productId = Long.parseLong(productIdStr);
+            Integer quantity = Integer.parseInt(quantityStr);
+            CartItemDTO cartItemDTO = new CartItemDTO(currentUser.getId(), productId, quantity);
+            boolean success = orderService.directBuy(cartItemDTO);
+            if (success) {
+                System.out.println("添加成功");
+                session.commit();
+            } else {
+                System.out.println("添加失败");
+                session.rollback();
+            }
+        } catch (Exception e) {
+            log.error("添加失败：{}", e.getMessage());
+            System.out.println("添加失败：" + e.getMessage());
         }
     }
 

@@ -59,4 +59,10 @@
     <update id="setDefaultById">
         UPDATE addresses SET is_default = 1 WHERE id = #{id} AND user_id = #{userId}
     </update>
+
+    <select id="selectDefaultAddress" resultType="java.lang.String">
+        select concat(province,city,district,street) as detailedAddress
+        from addresses
+        where user_id = #{userId} and is_default = true
+    </select>
 </mapper>

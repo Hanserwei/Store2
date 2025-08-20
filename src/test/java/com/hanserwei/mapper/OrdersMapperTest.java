@@ -1,5 +1,6 @@
 package com.hanserwei.mapper;
 
+import com.hanserwei.entity.po.Item;
 import com.hanserwei.entity.po.OrderItem;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
