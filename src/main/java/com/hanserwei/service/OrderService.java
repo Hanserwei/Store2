@@ -13,7 +13,7 @@ public interface OrderService {
     
     List<OrderVO> getOrdersByUserId(Long userId);
 
-    boolean cancelOrder(Long id);
+    boolean cancelOrder(Long orderId, Long currentUserId);
 
     boolean payOrder(Long orderId, Long userId, BigDecimal balance);
 

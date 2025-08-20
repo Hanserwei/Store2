@@ -18,7 +18,7 @@ public interface OrdersMapper {
 
     List<OrderVO> selectByUserId(Long userId);
 
-    int cancelOrder(Long id);
+    int cancelOrder(@Param("orderId") Long orderId,@Param("currentUserId") Long currentUserId);
 
     int cancelOrderItems(Long id);
 

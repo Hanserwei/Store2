@@ -79,14 +79,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public boolean cancelOrder(Long id) {
-        if (id == null) {
+    public boolean cancelOrder(Long orderId, Long currentUserId) {
+        if (orderId == null) {
             throw new RuntimeException("订单ID不能为空");
         }
-        boolean order_result = ordersMapper.cancelOrder(id) > 0;
+        if (currentUserId == null || currentUserId <= 0) {
+            throw new RuntimeException("用户ID不能为空");
+        }
+        boolean order_result = ordersMapper.cancelOrder(orderId, currentUserId) > 0;
         if (order_result) {
             // 更新order-items
-            return ordersMapper.cancelOrderItems(id) > 0;
+            return ordersMapper.cancelOrderItems(orderId) > 0;
         }
         return false;
     }

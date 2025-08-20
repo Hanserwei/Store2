@@ -4,24 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8614120-8fea-4d12-bd2c-d153d3c2eb7e" name="更改" comment="订单管理完成，模拟支付完成。">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/OrderItemBatch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/hanserwei/mapper/CartItemsMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="f8614120-8fea-4d12-bd2c-d153d3c2eb7e" name="更改" comment="fix：添加订单时，忘记更新order_item表，导致查询订单出错。&#10;&#10;新增直接购买商品选项。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/StoreApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/CartItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/CartItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/OrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/AddressesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/AddressesMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/CartItemsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/CartItemsMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/entity/po/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/OrdersMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/mapper/OrdersMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hanserwei/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/AddressesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/AddressesMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CartItemsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/CartItemsMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/OrdersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hanserwei/mapper/OrdersMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hanserwei/mapper/OrdersMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hanserwei/mapper/OrdersMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +234,7 @@
       <workItem from="1755562230652" duration="1545000" />
       <workItem from="1755571236365" duration="15435000" />
       <workItem from="1755587969446" duration="14000" />
-      <workItem from="1755653970168" duration="9034000" />
+      <workItem from="1755653970168" duration="10637000" />
     </task>
     <task id="LOCAL-00001" summary="在线商场Terminal版本，在终端完成运行。">
       <option name="closed" value="true" />
@@ -327,7 +316,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755587587160</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fix：添加订单时，忘记更新order_item表，导致查询订单出错。&#10;&#10;新增直接购买商品选项。">
+      <option name="closed" value="true" />
+      <created>1755663222248</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1755663222249</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,6 +350,7 @@
     <MESSAGE value="refactor(order): 简化 OrderServiceImpl 类的构造函数&#10;&#10;- 移除了未使用的 CartItemsMapper、ProductsMapper 和 ShoppingCartsMapper 依赖&#10;- 仅保留了必要的 OrdersMapper 依赖&#10;- 更新了 StoreApplication 中的 OrderService 实例创建方式" />
     <MESSAGE value="1. 用户表增加两列，身份列，余额列。&#10;2. 完成商品的添加删除修改。在新添加商品的时候可以新建商品分类。" />
     <MESSAGE value="订单管理完成，模拟支付完成。" />
-    <option name="LAST_COMMIT_MESSAGE" value="订单管理完成，模拟支付完成。" />
+    <MESSAGE value="fix：添加订单时，忘记更新order_item表，导致查询订单出错。&#10;&#10;新增直接购买商品选项。" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix：添加订单时，忘记更新order_item表，导致查询订单出错。&#10;&#10;新增直接购买商品选项。" />
   </component>
 </project>

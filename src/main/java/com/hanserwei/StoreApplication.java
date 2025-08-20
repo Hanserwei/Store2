@@ -953,7 +953,7 @@ public class StoreApplication {
                 // 取消订单
                 boolean success = false;
                 if (order != null) {
-                    success = orderService.cancelOrder(order.getId());
+                    success = orderService.cancelOrder(order.getId(), currentUser.getId());
                 }
                 if (success) {
                     System.out.println("订单取消成功！");

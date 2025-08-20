@@ -31,7 +31,7 @@
 
     <delete id="cancelOrder">
         DELETE FROM orders
-        WHERE id = #{id} AND user_id = #{userId}
+        WHERE id = #{orderId} AND user_id = #{currentUserId}
         AND status = 0
     </delete>
 
